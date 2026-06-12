@@ -1310,18 +1310,24 @@ body {
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAyc5tqzCH7FOMVFDjvsE3ZFM5OW_0QPP0",
-  authDomain: "controle-de-presenca-everyday.firebaseapp.com",
-  projectId: "controle-de-presenca-everyday",
-  storageBucket: "controle-de-presenca-everyday.firebasestorage.app",
-  messagingSenderId: "811327529427",
-  appId: "1:811327529427:web:c56b6a864e7744198a0f26"
+  apiKey: "AIzaSyBGEoKHY9hPUqYt3L_4YZrfp-yBQngrHiE",
+  authDomain: "feira-every.firebaseapp.com",
+  projectId: "feira-every",
+  storageBucket: "feira-every.firebasestorage.app",
+  messagingSenderId: "283201333339",
+  appId: "1:283201333339:web:ba6ce2776e4812d284b77e",
+  measurementId: "G-KWPNYYL0TF"
 };
 
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
+
+// Analytics (não bloqueia o app caso falhe — ex.: file://, sem HTTPS ou bloqueador)
+let analytics = null;
+try { analytics = getAnalytics(app); } catch (e) { console.warn("Analytics indisponível:", e); }
 
 async function cloudSave(payload) {
   try {
