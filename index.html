@@ -1081,6 +1081,9 @@ body {
 .fab-backdrop { position: fixed; inset: 0; z-index: 399; background: rgba(0,0,0,.04); display: none; }
 .fab-backdrop.show { display: block; }
 
+/* corrige bug visual: remove borda LED giratória bugada no botão Exportar */
+.fab-wrap .fab.led::before { display: none; content: none; }
+
 /* ════════ BANNER DE INSTALAÇÃO (PWA) ════════ */
 .install-banner {
   display: none;
